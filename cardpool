@@ -1,0 +1,3650 @@
+<div id="pmExplorer" class="pm-explorer">
+
+  <!-- ============================================
+       HEADER
+  ============================================= -->
+
+  <div class="pm-title-frame">
+
+    <div class="pm-kicker">
+      PREMODERN ARCHIVES
+    </div>
+
+    <h1>THE UNPLAYED</h1>
+
+    <div class="pm-subtitle">
+      Explore Premodern-legal cards that do not appear on the supplied played-card list.
+    </div>
+
+  </div>
+
+
+  <!-- ============================================
+       LOADING STATUS
+  ============================================= -->
+
+  <div id="pmLoading" class="pm-loading">
+    Loading the Premodern card pool...
+  </div>
+
+
+  <!-- ============================================
+       FILTERS
+  ============================================= -->
+
+  <div class="pm-controls">
+
+    <div class="pm-field pm-search-field">
+
+      <label for="pmSearch">
+        CARD NAME
+      </label>
+
+      <input
+        id="pmSearch"
+        type="text"
+        placeholder="e.g. Hidden Horror"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <div class="pm-field pm-search-field">
+
+      <label for="pmRulesSearch">
+        CARD TEXT
+      </label>
+
+      <input
+        id="pmRulesSearch"
+        type="text"
+        placeholder="e.g. sacrifice a creature"
+        autocomplete="off"
+      >
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmColor">
+        COLOR
+      </label>
+
+      <select id="pmColor">
+
+        <option value="">
+          All Colors
+        </option>
+
+        <option value="W">
+          White
+        </option>
+
+        <option value="U">
+          Blue
+        </option>
+
+        <option value="B">
+          Black
+        </option>
+
+        <option value="R">
+          Red
+        </option>
+
+        <option value="G">
+          Green
+        </option>
+
+        <option value="MULTI">
+          Multicolor
+        </option>
+
+        <option value="COLORLESS">
+          Colorless
+        </option>
+
+        <option value="LAND">
+          Land
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmType">
+        CARD TYPE
+      </label>
+
+      <select id="pmType">
+
+        <option value="">
+          All Types
+        </option>
+
+        <option value="Creature">
+          Creature
+        </option>
+
+        <option value="Instant">
+          Instant
+        </option>
+
+        <option value="Sorcery">
+          Sorcery
+        </option>
+
+        <option value="Enchantment">
+          Enchantment
+        </option>
+
+        <option value="Artifact">
+          Artifact
+        </option>
+
+        <option value="Land">
+          Land
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmSet">
+        SET
+      </label>
+
+      <select id="pmSet">
+
+        <option value="">
+          All Sets
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmMana">
+        MANA VALUE
+      </label>
+
+      <select id="pmMana">
+
+        <option value="">
+          Any Mana Value
+        </option>
+
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+
+        <option value="9+">
+          9+
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmRarity">
+        RARITY
+      </label>
+
+      <select id="pmRarity">
+
+        <option value="">
+          All Rarities
+        </option>
+
+        <option value="common">
+          Common
+        </option>
+
+        <option value="uncommon">
+          Uncommon
+        </option>
+
+        <option value="rare">
+          Rare
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="pm-field">
+
+      <label for="pmSort">
+        SORT BY
+      </label>
+
+      <select id="pmSort">
+
+        <option value="name-asc">
+          Name A–Z
+        </option>
+
+        <option value="name-desc">
+          Name Z–A
+        </option>
+
+        <option value="mv-asc">
+          Mana Value: Low–High
+        </option>
+
+        <option value="mv-desc">
+          Mana Value: High–Low
+        </option>
+
+        <option value="color">
+          Color
+        </option>
+
+        <option value="type">
+          Card Type
+        </option>
+
+        <option value="set">
+          Set
+        </option>
+
+      </select>
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================
+       BUTTONS
+  ============================================= -->
+
+  <div class="pm-actions">
+
+    <button
+      id="pmRandom"
+      class="pm-button pm-random"
+      type="button"
+    >
+      ✦ RANDOM CARD
+    </button>
+
+
+    <button
+      id="pmReset"
+      class="pm-button pm-secondary"
+      type="button"
+    >
+      RESET FILTERS
+    </button>
+
+  </div>
+
+
+  <!-- ============================================
+       RESULT COUNTS
+  ============================================= -->
+
+  <div class="pm-count-bar">
+
+    <div>
+
+      <span id="pmResultCount">
+        0
+      </span>
+
+      CARDS FOUND
+
+    </div>
+
+
+    <div class="pm-pool-info">
+
+      <span id="pmPoolCount">
+        0
+      </span>
+
+      AVAILABLE CARDS
+
+    </div>
+
+  </div>
+
+
+  <!-- ============================================
+       RANDOM CARD RESULT
+  ============================================= -->
+
+  <div
+    id="pmRandomArea"
+    class="pm-random-area"
+  ></div>
+
+
+  <!-- ============================================
+       CARD RESULTS
+  ============================================= -->
+
+  <div
+    id="pmResults"
+    class="pm-results"
+  ></div>
+
+
+  <button
+    id="pmLoadMore"
+    class="pm-load-more"
+    type="button"
+    style="display:none;"
+  >
+    SHOW MORE CARDS
+  </button>
+
+</div>
+
+
+
+<style>
+
+/* ==========================================================
+   PREMODERN EXPLORER
+   BLACK / CHARCOAL / YELLOW
+========================================================== */
+
+.pm-explorer {
+
+  --pm-bg: #111111;
+  --pm-panel: #1b1b1b;
+  --pm-panel-light: #222222;
+
+  --pm-border: #363636;
+  --pm-border-light: #4a4a4a;
+
+  --pm-text: #ffffff;
+  --pm-muted: #9b9b9b;
+
+  --pm-accent: #f3d331;
+
+  --pm-success: #56d364;
+  --pm-error: #ff5c5c;
+
+  max-width: 1200px;
+
+  margin: 40px auto;
+  padding: 32px;
+
+  background: var(--pm-bg);
+
+  border: 1px solid var(--pm-border);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  color: var(--pm-text);
+
+  box-sizing: border-box;
+}
+
+
+.pm-explorer * {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.pm-title-frame {
+
+  margin-bottom: 24px;
+
+  padding-bottom: 22px;
+
+  border-bottom:
+    1px solid var(--pm-border);
+}
+
+
+.pm-kicker {
+
+  margin-bottom: 8px;
+
+  color: var(--pm-accent);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: .18em;
+}
+
+
+.pm-title-frame h1 {
+
+  margin: 0;
+
+  font-size:
+    clamp(42px, 7vw, 76px);
+
+  line-height: .9;
+
+  font-weight: 900;
+
+  letter-spacing: -.05em;
+}
+
+
+.pm-subtitle {
+
+  max-width: 720px;
+
+  margin-top: 14px;
+
+  color: var(--pm-muted);
+
+  font-size: 15px;
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================================
+   LOADING
+========================================================== */
+
+.pm-loading {
+
+  margin-bottom: 18px;
+
+  padding: 14px 16px;
+
+  border:
+    1px solid var(--pm-border);
+
+  background:
+    var(--pm-panel);
+
+  color:
+    var(--pm-muted);
+
+  font-size: 13px;
+}
+
+
+/* ==========================================================
+   FILTER PANEL
+========================================================== */
+
+.pm-controls {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  padding: 18px;
+
+  background:
+    var(--pm-panel);
+
+  border:
+    1px solid var(--pm-border);
+}
+
+
+.pm-field {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+
+.pm-search-field {
+  grid-column: span 2;
+}
+
+
+.pm-field label {
+
+  color: #b5b5b5;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: .14em;
+}
+
+
+/* ==========================================================
+   FORM FIELDS
+========================================================== */
+
+.pm-field input,
+.pm-field select {
+
+  width: 100%;
+
+  height: 46px;
+
+  padding:
+    0 13px;
+
+  border:
+    1px solid var(--pm-border);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background:
+    #141414;
+
+  color:
+    var(--pm-text);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    14px;
+}
+
+
+.pm-field input::placeholder {
+  color: #666666;
+}
+
+
+.pm-field input:focus,
+.pm-field select:focus {
+
+  border-color:
+    var(--pm-accent);
+
+  box-shadow:
+    0 0 0 1px
+    var(--pm-accent);
+}
+
+
+.pm-field select {
+  cursor: pointer;
+}
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.pm-actions {
+
+  display: flex;
+
+  gap: 10px;
+
+  margin:
+    14px 0;
+}
+
+
+.pm-button,
+.pm-load-more {
+
+  min-height: 46px;
+
+  padding:
+    0 22px;
+
+  border-radius: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  letter-spacing: .08em;
+
+  cursor: pointer;
+
+  transition:
+    opacity .15s ease,
+    transform .15s ease;
+}
+
+
+.pm-random {
+
+  border: 0;
+
+  background:
+    var(--pm-accent);
+
+  color:
+    #111111;
+}
+
+
+.pm-secondary {
+
+  border:
+    1px solid
+    var(--pm-border-light);
+
+  background:
+    var(--pm-panel);
+
+  color:
+    #ffffff;
+}
+
+
+.pm-button:hover,
+.pm-load-more:hover {
+  opacity: .85;
+}
+
+
+.pm-button:active,
+.pm-load-more:active {
+  transform:
+    scale(.98);
+}
+
+
+/* ==========================================================
+   COUNT BAR
+========================================================== */
+
+.pm-count-bar {
+
+  display: flex;
+
+  justify-content:
+    space-between;
+
+  align-items:
+    center;
+
+  margin-bottom:
+    18px;
+
+  padding:
+    12px 0;
+
+  border-bottom:
+    1px solid
+    var(--pm-border);
+
+  color:
+    var(--pm-muted);
+
+  font-size:
+    11px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    .1em;
+}
+
+
+.pm-count-bar span {
+  color: #ffffff;
+}
+
+
+.pm-pool-info {
+  color: #777777;
+}
+
+
+/* ==========================================================
+   RESULTS GRID
+========================================================== */
+
+.pm-results {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    16px;
+}
+
+
+/* ==========================================================
+   CARD
+========================================================== */
+
+.pm-card {
+
+  min-width:
+    0;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    var(--pm-border);
+
+  background:
+    var(--pm-panel);
+
+  transition:
+    border-color .15s ease,
+    transform .15s ease;
+}
+
+
+.pm-card:hover {
+
+  border-color:
+    #666666;
+
+  transform:
+    translateY(-2px);
+}
+
+
+.pm-card-image {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  aspect-ratio:
+    488 / 680;
+
+  object-fit:
+    cover;
+
+  background:
+    #252525;
+
+  border-bottom:
+    1px solid
+    var(--pm-border);
+}
+
+
+.pm-card-info {
+  padding: 14px;
+}
+
+
+.pm-card-name {
+
+  margin-bottom:
+    6px;
+
+  color:
+    #ffffff;
+
+  font-size:
+    17px;
+
+  line-height:
+    1.15;
+
+  font-weight:
+    800;
+}
+
+
+.pm-card-type {
+
+  min-height:
+    28px;
+
+  color:
+    var(--pm-muted);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.35;
+}
+
+
+.pm-card-meta {
+
+  display:
+    flex;
+
+  justify-content:
+    space-between;
+
+  gap:
+    8px;
+
+  margin-top:
+    11px;
+
+  padding-top:
+    10px;
+
+  border-top:
+    1px solid
+    var(--pm-border);
+
+  color:
+    #777777;
+
+  font-size:
+    10px;
+
+  text-transform:
+    uppercase;
+
+  letter-spacing:
+    .05em;
+}
+
+
+.pm-card-link {
+
+  display:
+    block;
+
+  color:
+    inherit;
+
+  text-decoration:
+    none;
+}
+
+
+.pm-card-link:hover
+.pm-card-name {
+
+  color:
+    var(--pm-accent);
+}
+
+
+/* ==========================================================
+   COLOR STRIPS
+========================================================== */
+
+.pm-card[data-color="W"] {
+  border-top:
+    3px solid #e7e0c7;
+}
+
+
+.pm-card[data-color="U"] {
+  border-top:
+    3px solid #4d8fc0;
+}
+
+
+.pm-card[data-color="B"] {
+  border-top:
+    3px solid #69636e;
+}
+
+
+.pm-card[data-color="R"] {
+  border-top:
+    3px solid #c65345;
+}
+
+
+.pm-card[data-color="G"] {
+  border-top:
+    3px solid #4c845d;
+}
+
+
+.pm-card[data-color="MULTI"] {
+  border-top:
+    3px solid #c0a044;
+}
+
+
+.pm-card[data-color="COLORLESS"] {
+  border-top:
+    3px solid #8a8a8a;
+}
+
+
+.pm-card[data-color="LAND"] {
+  border-top:
+    3px solid #8c6f52;
+}
+
+
+/* ==========================================================
+   RANDOM CARD
+========================================================== */
+
+.pm-random-area:empty {
+  display: none;
+}
+
+
+.pm-random-area {
+
+  margin-bottom:
+    22px;
+
+  padding:
+    20px;
+
+  border:
+    1px solid
+    var(--pm-border);
+
+  background:
+    var(--pm-panel);
+}
+
+
+.pm-random-title {
+
+  margin-bottom:
+    16px;
+
+  color:
+    var(--pm-accent);
+
+  font-size:
+    11px;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    .16em;
+}
+
+
+.pm-random-card {
+
+  display:
+    grid;
+
+  grid-template-columns:
+    220px 1fr;
+
+  gap:
+    24px;
+
+  align-items:
+    center;
+}
+
+
+.pm-random-card img {
+
+  display:
+    block;
+
+  width:
+    100%;
+
+  border:
+    1px solid
+    var(--pm-border-light);
+
+  background:
+    #222222;
+}
+
+
+.pm-random-name {
+
+  margin-bottom:
+    8px;
+
+  color:
+    #ffffff;
+
+  font-size:
+    clamp(
+      28px,
+      5vw,
+      48px
+    );
+
+  line-height:
+    .95;
+
+  font-weight:
+    900;
+
+  letter-spacing:
+    -.03em;
+}
+
+
+.pm-random-type {
+
+  margin-bottom:
+    14px;
+
+  color:
+    var(--pm-muted);
+
+  font-size:
+    14px;
+}
+
+
+.pm-random-text {
+
+  max-width:
+    600px;
+
+  color:
+    #d0d0d0;
+
+  font-size:
+    14px;
+
+  line-height:
+    1.55;
+
+  white-space:
+    pre-line;
+}
+
+
+/* ==========================================================
+   LOAD MORE
+========================================================== */
+
+.pm-load-more {
+
+  display:
+    block;
+
+  margin:
+    24px auto 0;
+
+  border:
+    1px solid
+    var(--pm-border-light);
+
+  background:
+    var(--pm-panel);
+
+  color:
+    #ffffff;
+}
+
+
+/* ==========================================================
+   NO RESULTS
+========================================================== */
+
+.pm-empty {
+
+  grid-column:
+    1 / -1;
+
+  padding:
+    40px 20px;
+
+  border:
+    1px solid
+    var(--pm-border);
+
+  background:
+    var(--pm-panel);
+
+  color:
+    var(--pm-muted);
+
+  text-align:
+    center;
+
+  font-size:
+    14px;
+}
+
+
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
+
+.pm-explorer
+::-webkit-scrollbar {
+
+  width:
+    10px;
+
+  height:
+    10px;
+}
+
+
+.pm-explorer
+::-webkit-scrollbar-track {
+
+  background:
+    #151515;
+}
+
+
+.pm-explorer
+::-webkit-scrollbar-thumb {
+
+  background:
+    #3b3b3b;
+}
+
+
+.pm-explorer
+::-webkit-scrollbar-thumb:hover {
+
+  background:
+    #555555;
+}
+
+
+/* ==========================================================
+   TABLET
+========================================================== */
+
+@media
+(max-width: 1000px) {
+
+  .pm-results {
+
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+
+  }
+
+}
+
+
+/* ==========================================================
+   SMALL TABLET
+========================================================== */
+
+@media
+(max-width: 760px) {
+
+  .pm-explorer {
+
+    margin:
+      20px auto;
+
+    padding:
+      22px;
+
+  }
+
+
+  .pm-controls {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+  }
+
+
+  .pm-results {
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+  }
+
+
+  .pm-random-card {
+
+    grid-template-columns:
+      160px 1fr;
+
+  }
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media
+(max-width: 520px) {
+
+  .pm-controls {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .pm-search-field {
+
+    grid-column:
+      span 1;
+
+  }
+
+
+  .pm-results {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .pm-actions {
+
+    flex-direction:
+      column;
+
+  }
+
+
+  .pm-button {
+
+    width:
+      100%;
+
+  }
+
+
+  .pm-random-card {
+
+    grid-template-columns:
+      1fr;
+
+  }
+
+
+  .pm-random-card img {
+
+    max-width:
+      260px;
+
+  }
+
+}
+
+</style>
+
+
+
+<script>
+
+/* ==========================================================
+   PREMODERN LEGAL SETS
+========================================================== */
+
+const LEGAL_SETS = [
+
+  ["4ed", "Fourth Edition"],
+  ["ice", "Ice Age"],
+  ["chr", "Chronicles"],
+  ["hml", "Homelands"],
+  ["all", "Alliances"],
+  ["mir", "Mirage"],
+  ["vis", "Visions"],
+  ["5ed", "Fifth Edition"],
+  ["wth", "Weatherlight"],
+  ["tmp", "Tempest"],
+  ["sth", "Stronghold"],
+  ["exo", "Exodus"],
+  ["usg", "Urza's Saga"],
+  ["ulg", "Urza's Legacy"],
+  ["6ed", "Classic Sixth Edition"],
+  ["uds", "Urza's Destiny"],
+  ["mmq", "Mercadian Masques"],
+  ["nem", "Nemesis"],
+  ["pcy", "Prophecy"],
+  ["inv", "Invasion"],
+  ["pls", "Planeshift"],
+  ["7ed", "Seventh Edition"],
+  ["apc", "Apocalypse"],
+  ["ody", "Odyssey"],
+  ["tor", "Torment"],
+  ["jud", "Judgment"],
+  ["ons", "Onslaught"],
+  ["lgn", "Legions"],
+  ["scg", "Scourge"]
+
+];
+
+
+/* ==========================================================
+   PREMODERN BANNED CARDS
+========================================================== */
+
+const BANNED_CARDS = `
+
+Amulet of Quoz
+Balance
+Brainstorm
+Bronze Tablet
+Channel
+Demonic Consultation
+Earthcraft
+Entomb
+Flash
+Force of Will
+Goblin Recruiter
+Grim Monolith
+Jeweled Bird
+Land Tax
+Mana Vault
+Memory Jar
+Mind Twist
+Mind's Desire
+Mystical Tutor
+Necropotence
+Parallax Tide
+Rebirth
+Strip Mine
+Tempest Efreet
+Tendrils of Agony
+Time Spiral
+Timmerian Fiends
+Tolarian Academy
+Vampiric Tutor
+Windfall
+Worldgorger Dragon
+Yawgmoth's Bargain
+Yawgmoth's Will
+
+`;
+
+
+/* ==========================================================
+   YOUR EXISTING CARD LIST
+
+   Everything here is REMOVED from the explorer.
+========================================================== */
+
+const EXCLUDED_CARDS = `
+
+Abeyance
+Abolish
+Academy Rector
+Akroma's Vengeance
+Akroma, Angel of Wrath
+Armageddon
+Astral Slide
+Aura of Silence
+Auramancer
+Battle Screech
+Cataclysm
+Crusade
+Daru Spiritualist
+Decree of Justice
+Defiant Falcon
+Disenchant
+Dismantling Blow
+Enlightened Tutor
+Eternal Dragon
+Exalted Angel
+Glorious Anthem
+Glory
+Glowrider
+Humility
+Karmic Guide
+Karmic Justice
+Kirtar's Desire
+Lin Sivvi, Defiant Hero
+Master Apothecary
+Mobilization
+Monk Realist
+Mother of Runes
+Nomads en-Kor
+Opalescence
+Orim's Chant
+Paladin en-Vec
+Parallax Wave
+Plated Sliver
+Prismatic Strands
+Ramosian Sergeant
+Ray of Revelation
+Renewed Faith
+Replenish
+Reverent Mantra
+Reya Dawnbringer
+Rune of Protection: Red
+Sacred Ground
+Sacred Mesa
+Savannah Lions
+Seal of Cleansing
+Shaman en-Kor
+Shared Triumph
+Silver Knight
+Solitary Confinement
+Soltari Champion
+Soltari Monk
+Soltari Priest
+Soul Warden
+Swords to Plowshares
+Task Force
+Tireless Tribe
+Tithe
+True Believer
+Weathered Wayfarer
+Whipcorder
+Worship
+Worthy Cause
+Wrath of God
+
+Accumulated Knowledge
+Annul
+Aquamoeba
+Arcane Denial
+Attunement
+Boomerang
+Brain Freeze
+Capsize
+Careful Study
+Chain of Vapor
+Circular Logic
+Cloud of Faeries
+Counterspell
+Cunning Wish
+Daze
+Deep Analysis
+Disrupt
+Dominate
+Ensnare
+Fact or Fiction
+Flash of Insight
+Foil
+Forbid
+Force Spike
+Frantic Search
+Gilded Drake
+Great Whale
+Gush
+Hapless Researcher
+Impulse
+Intuition
+Lat-Nam's Legacy
+Man-o'-War
+Mana Leak
+Mana Short
+Meditate
+Memory Lapse
+Mental Note
+Merchant Scroll
+Merfolk Looter
+Miscalculation
+Misdirection
+Morphling
+Opposition
+Opt
+Palinchron
+Parallax Tide
+Peek
+Portent
+Power Sink
+Predict
+Prohibit
+Propaganda
+Quiet Speculation
+Raven Familiar
+Repulse
+Show and Tell
+Sleight of Hand
+Snap
+Standstill
+Stasis
+Stifle
+Stroke of Genius
+Teferi's Response
+Thwart
+Tinker
+Tradewind Rider
+Upheaval
+Vision Charm
+Volrath's Shapeshifter
+Waterfront Bouncer
+Winged Sliver
+Wonder
+Words of Wind
+Words of Wisdom
+
+Animate Dead
+Ashen Ghoul
+Avatar of Woe
+Bad Moon
+Bane of the Living
+Black Knight
+Blackmail
+Bladewing's Thrall
+Bone Shredder
+Bottomless Pit
+Braids, Cabal Minion
+Buried Alive
+Cabal Archon
+Cabal Ritual
+Cabal Therapy
+Carnophage
+Carrion Feeder
+Chain of Smog
+Chainer's Edict
+Coffin Purge
+Contagion
+Contamination
+Corpse Dance
+Dark Ritual
+Dark Supplicant
+Dauthi Horror
+Dauthi Slayer
+Decree of Pain
+Diabolic Edict
+Diabolic Intent
+Drain Life
+Drinker of Sorrow
+Duress
+Engineered Plague
+Exhume
+Funeral Charm
+Gempalm Polluter
+Ghastly Demise
+Graveborn Muse
+Grinning Demon
+Hatred
+Haunting Echoes
+Headhunter
+Hypnotic Specter
+Hypnox
+Ill-Gotten Gains
+Innocent Blood
+Insidious Dreams
+Kaervek's Spite
+Knight of Stromgald
+Krovikan Horror
+Living Death
+Lord of the Undead
+Mesmeric Fiend
+Mindslicer
+Nantuko Shade
+Nether Spirit
+Phage the Untouchable
+Phyrexian Arena
+Phyrexian Negator
+Phyrexian Rager
+Plague Spitter
+Pox
+Priest of Gix
+Putrid Imp
+Ravenous Rats
+Reanimate
+Recurring Nightmare
+Rotlung Reanimator
+Rotting Giant
+Sadistic Hypnotist
+Sarcomancy
+Scion of Darkness
+Shallow Grave
+Shepherd of Rot
+Sickening Dreams
+Silent Specter
+Skeletal Scrying
+Skittering Skirge
+Smother
+Snuff Out
+Spinning Darkness
+Spirit of the Night
+Stupor
+Sutured Ghoul
+Tainted Pact
+Tortured Existence
+Unearth
+Unmask
+Vendetta
+Visara the Dreadful
+Withered Wretch
+Zombie Infestation
+
+About Face
+Aftershock
+Anger
+Avalanche Riders
+Ball Lightning
+Blistering Firecat
+Browbeat
+Burning Wish
+Covetous Dragon
+Dragon Breath
+Dragon Mage
+Dwarven Miner
+Earthquake
+Erratic Explosion
+Final Fortune
+Fireblast
+Firebolt
+Firestorm
+Flame Rift
+Flametongue Kavu
+Fling
+Form of the Dragon
+Gempalm Incinerator
+Ghitu Slinger
+Goblin Bombardment
+Goblin Cadets
+Goblin Goon
+Goblin King
+Goblin Lackey
+Goblin Matron
+Goblin Patrol
+Goblin Piledriver
+Goblin Pyromancer
+Goblin Ringleader
+Goblin Sharpshooter
+Goblin Tinkerer
+Goblin Warchief
+Goblin Welder
+Grim Lavamancer
+Hearth Charm
+Incinerate
+Jackal Pup
+Lava Dart
+Lavaborn Muse
+Lightning Bolt
+Lightning Rift
+Mogg Fanatic
+Mogg Flunkies
+Orcish Settlers
+Pandemonium
+Pillage
+Price of Progress
+Pyroclasm
+Pyrokinesis
+Pyrostatic Pillar
+Reckless Abandon
+Reckless Charge
+Rorix Bladewing
+Seal of Fire
+Shard Phoenix
+Shock
+Siege-Gang Commander
+Skirk Prospector
+Slice and Dice
+Spark Spray
+Sparksmith
+Squee, Goblin Nabob
+Stone Rain
+Sulfuric Vortex
+Urza's Rage
+Volcanic Hammer
+Volcanic Spray
+Wildfire
+Words of War
+
+Aluren
+Argothian Enchantress
+Arrogant Wurm
+Basking Rootwalla
+Biorhythm
+Birchlore Rangers
+Birds of Paradise
+Blastoderm
+Bounty of the Hunt
+Call of the Herd
+Caller of the Claw
+Cartographer
+Crop Rotation
+Deranged Hermit
+Elephant Grass
+Elvish Champion
+Elvish Lyrist
+Elvish Spirit Guide
+Enchantress's Presence
+Exploration
+Fertile Ground
+Fyndhorn Elves
+Gaea's Blessing
+Gamekeeper
+Genesis
+Giant Growth
+Grizzly Fate
+Hermit Druid
+Hunting Pack
+Kamahl, Fist of Krosa
+Kaysa
+Krosan Cloudscraper
+Krosan Reclamation
+Krosan Tusker
+Living Wish
+Llanowar Elves
+Mirri's Guile
+Mulch
+Multani's Acolyte
+Multani, Maro-Sorcerer
+Muscle Sliver
+Nantuko Vigilante
+Natural Order
+Naturalize
+Nimble Mongoose
+Oath of Druids
+Pattern of Rebirth
+Plow Under
+Priest of Titania
+Quirion Dryad
+Quirion Ranger
+Rampant Growth
+Rancor
+Ravenous Baloth
+River Boa
+Roar of the Wurm
+Root Maze
+Saproling Burst
+Skyshroud Elite
+Skyshroud Poacher
+Spike Feeder
+Spike Weaver
+Spore Frog
+Survival of the Fittest
+Sylvan Library
+Sylvan Messenger
+Sylvan Safekeeper
+Symbiotic Wurm
+Tempting Wurm
+Terravore
+Thermokarst
+Thornscape Battlemage
+Timberwatch Elf
+Tinder Wall
+Tribal Forcemage
+Uktabi Orangutan
+Verdant Force
+Veteran Brawlers
+Veteran Explorer
+Wall of Blossoms
+Wall of Roots
+Wellwisher
+Werebear
+Wild Growth
+Wild Mongrel
+Winter's Grasp
+Wirewood Savage
+Wirewood Symbiote
+Words of Wilding
+Worldly Tutor
+Yavimaya Elder
+Yavimaya Granger
+
+Absorb
+Acidic Sliver
+Anurid Brushhopper
+Armadillo Cloak
+Assault / Battery
+Bladewing the Risen
+Blazing Specter
+Cavern Harpy
+Crystalline Sliver
+Death Grasp
+Eladamri's Call
+Fire / Ice
+Fires of Yavimaya
+Gerrard's Verdict
+Hibernation Sliver
+Iridescent Angel
+Life / Death
+Lightning Angel
+Lim-Dûl's Vault
+Meddling Mage
+Mystic Enforcer
+Mystic Snake
+Pernicious Deed
+Phantom Nishoba
+Prophetic Bolt
+Psychatog
+Shadowmage Infiltrator
+Shivan Wurm
+Spined Sliver
+Spiritmonger
+Sterling Grove
+Terminate
+Vindicate
+Wax / Wane
+
+Altar of Dementia
+Black Vise
+Chromatic Sphere
+Citanul Flute
+Claws of Gix
+Cursed Scroll
+Defense Grid
+Draco
+Ensnaring Bridge
+Fellwar Stone
+Fire Diamond
+Helm of Awakening
+Horn of Greed
+Icy Manipulator
+Ivory Tower
+Karn, Silver Golem
+Lion's Eye Diamond
+Lotus Petal
+Masticore
+Metalworker
+Mind Stone
+Mishra's Helix
+Mox Diamond
+Nevinyrral's Disk
+Phyrexian Devourer
+Phyrexian Dreadnought
+Phyrexian Furnace
+Powder Keg
+Sapphire Medallion
+Scroll Rack
+Shield Sphere
+Sky Diamond
+Skycloud Egg
+Smokestack
+Sphere of Resistance
+Tangle Wire
+Temporal Aperture
+The Rack
+Thopter Squadron
+Thran Dynamo
+Tormod's Crypt
+Triskelion
+Tsabo's Web
+Urza's Bauble
+Winter Orb
+Zuran Orb
+
+Adarkar Wastes
+Ancient Tomb
+Barbarian Ring
+Barren Moor
+Battlefield Forge
+Bloodstained Mire
+Brushland
+Cabal Pit
+Caves of Koilos
+Centaur Garden
+Cephalid Coliseum
+City of Brass
+City of Traitors
+Coastal Tower
+Crosis's Catacombs
+Crystal Vein
+Darigaaz's Caldera
+Darkwater Catacombs
+Dromar's Cavern
+Dust Bowl
+Faerie Conclave
+Flooded Strand
+Forbidding Watchtower
+Forgotten Cave
+Forsaken City
+Gaea's Cradle
+Gemstone Mine
+Ghitu Encampment
+Grand Coliseum
+Karplusan Forest
+Kor Haven
+Llanowar Wastes
+Mishra's Factory
+Mossfire Valley
+Nantuko Monastery
+Phyrexian Tower
+Polluted Delta
+Quicksand
+Reflecting Pool
+Riftstone Portal
+Rishadan Port
+Rith's Grove
+Secluded Steppe
+Serra's Sanctum
+Shadowblood Ridge
+Shivan Reef
+Skycloud Expanse
+Spawning Pool
+Starlit Sanctum
+Sulfurous Springs
+Sungrass Prairie
+Tainted Field
+Tainted Peak
+Tainted Wood
+Teferi's Isle
+Thawing Glaciers
+Thran Quarry
+Tranquil Thicket
+Treetop Village
+Treva's Ruins
+Underground River
+Undiscovered Paradise
+Unholy Grotto
+Urza's Mine
+Urza's Power Plant
+Urza's Tower
+Volrath's Stronghold
+Wasteland
+Windswept Heath
+Wooded Foothills
+Yavimaya Coast
+
+`;
+
+
+/* ==========================================================
+   NORMALIZE CARD NAMES
+
+   Makes searching tolerant of:
+   - capitalization
+   - apostrophes
+   - accents
+   - punctuation
+========================================================== */
+
+function normalizeName(value) {
+
+  return value
+
+    .normalize("NFD")
+
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    )
+
+    .replace(
+      /[’']/g,
+      ""
+    )
+
+    .replace(
+      /[^a-zA-Z0-9]/g,
+      ""
+    )
+
+    .toLowerCase();
+
+}
+
+
+/* ==========================================================
+   TURN TEXT LISTS INTO SETS
+========================================================== */
+
+function textToSet(text) {
+
+  return new Set(
+
+    text
+
+      .trim()
+
+      .split("\n")
+
+      .map(
+        line =>
+          line.trim()
+      )
+
+      .filter(Boolean)
+
+      .map(normalizeName)
+
+  );
+
+}
+
+
+const excludedSet =
+  textToSet(EXCLUDED_CARDS);
+
+
+const bannedSet =
+  textToSet(BANNED_CARDS);
+
+
+/* ==========================================================
+   APP STATE
+========================================================== */
+
+let allCards = [];
+
+let filteredCards = [];
+
+let visibleCount = 80;
+
+const pageSize = 80;
+
+
+/* ==========================================================
+   DOM ELEMENTS
+========================================================== */
+
+const searchInput =
+  document.getElementById(
+    "pmSearch"
+  );
+
+
+const rulesInput =
+  document.getElementById(
+    "pmRulesSearch"
+  );
+
+
+const colorSelect =
+  document.getElementById(
+    "pmColor"
+  );
+
+
+const typeSelect =
+  document.getElementById(
+    "pmType"
+  );
+
+
+const setSelect =
+  document.getElementById(
+    "pmSet"
+  );
+
+
+const manaSelect =
+  document.getElementById(
+    "pmMana"
+  );
+
+
+const raritySelect =
+  document.getElementById(
+    "pmRarity"
+  );
+
+
+const sortSelect =
+  document.getElementById(
+    "pmSort"
+  );
+
+
+const resultsEl =
+  document.getElementById(
+    "pmResults"
+  );
+
+
+const resultCountEl =
+  document.getElementById(
+    "pmResultCount"
+  );
+
+
+const poolCountEl =
+  document.getElementById(
+    "pmPoolCount"
+  );
+
+
+const randomButton =
+  document.getElementById(
+    "pmRandom"
+  );
+
+
+const resetButton =
+  document.getElementById(
+    "pmReset"
+  );
+
+
+const randomArea =
+  document.getElementById(
+    "pmRandomArea"
+  );
+
+
+const loadingEl =
+  document.getElementById(
+    "pmLoading"
+  );
+
+
+const loadMoreButton =
+  document.getElementById(
+    "pmLoadMore"
+  );
+
+
+/* ==========================================================
+   BUILD SET DROPDOWN
+========================================================== */
+
+LEGAL_SETS.forEach(
+  ([code, name]) => {
+
+    const option =
+      document.createElement(
+        "option"
+      );
+
+
+    option.value =
+      code;
+
+
+    option.textContent =
+      name;
+
+
+    setSelect.appendChild(
+      option
+    );
+
+  }
+);
+
+
+/* ==========================================================
+   LOAD ALL PREMODERN CARDS FROM SCRYFALL
+========================================================== */
+
+async function loadPremodernCards() {
+
+  try {
+
+    loadingEl.textContent =
+      "Loading legal Premodern cards...";
+
+
+    /* -----------------------------------------
+       BUILD SET QUERY
+    ----------------------------------------- */
+
+    const setQuery = LEGAL_SETS
+
+      .map(
+        ([code]) =>
+          `e:${code}`
+      )
+
+      .join(" OR ");
+
+
+    const query =
+      `game:paper (${setQuery})`;
+
+
+    let url =
+
+      "https://api.scryfall.com/cards/search" +
+
+      "?unique=prints" +
+
+      "&order=name" +
+
+      "&q=" +
+
+      encodeURIComponent(query);
+
+
+    const printings = [];
+
+
+    /* -----------------------------------------
+       SCRYFALL IS PAGINATED
+    ----------------------------------------- */
+
+    while (url) {
+
+      const response =
+        await fetch(
+          url,
+          {
+            headers: {
+              "Accept":
+                "application/json"
+            }
+          }
+        );
+
+
+      if (!response.ok) {
+
+        throw new Error(
+          `Card database returned ${response.status}`
+        );
+
+      }
+
+
+      const json =
+        await response.json();
+
+
+      printings.push(
+        ...json.data
+      );
+
+
+      loadingEl.textContent =
+        "Loading Premodern archive... " +
+        printings.length +
+        " printings found";
+
+
+      url =
+        json.has_more
+          ? json.next_page
+          : null;
+
+
+      /*
+        Small pause between API pages.
+      */
+
+      if (url) {
+
+        await sleep(150);
+
+      }
+
+    }
+
+
+    /* -----------------------------------------
+       COLLAPSE DUPLICATE PRINTINGS
+    ----------------------------------------- */
+
+    allCards =
+      aggregateCardPrintings(
+        printings
+      )
+
+
+      /* ---------------------------------------
+         REMOVE BANNED CARDS
+      --------------------------------------- */
+
+      .filter(
+        card =>
+          !bannedSet.has(
+            normalizeName(
+              card.name
+            )
+          )
+      )
+
+
+      /* ---------------------------------------
+         REMOVE CARDS FROM YOUR PLAYED LIST
+      --------------------------------------- */
+
+      .filter(
+        card =>
+          !excludedSet.has(
+            normalizeName(
+              card.name
+            )
+          )
+      );
+
+
+    /* -----------------------------------------
+       DEFAULT SORT
+    ----------------------------------------- */
+
+    allCards.sort(
+      (a, b) =>
+        a.name.localeCompare(
+          b.name
+        )
+    );
+
+
+    loadingEl.style.display =
+      "none";
+
+
+    poolCountEl.textContent =
+      allCards.length
+        .toLocaleString();
+
+
+    applyFilters();
+
+  }
+
+
+  catch (error) {
+
+    console.error(error);
+
+
+    loadingEl.innerHTML = `
+
+      <strong>
+        Unable to load the card database.
+      </strong>
+
+      <br><br>
+
+      ${escapeHTML(
+        error.message
+      )}
+
+    `;
+
+  }
+
+}
+
+
+/* ==========================================================
+   COMBINE MULTIPLE PRINTINGS OF THE SAME CARD
+========================================================== */
+
+function aggregateCardPrintings(
+  printings
+) {
+
+  const map =
+    new Map();
+
+
+  printings.forEach(
+    card => {
+
+      const key =
+
+        card.oracle_id ||
+
+        normalizeName(
+          card.name
+        );
+
+
+      /* ---------------------------------------
+         CREATE CARD ENTRY
+      --------------------------------------- */
+
+      if (!map.has(key)) {
+
+        map.set(
+          key,
+          {
+
+            id:
+              key,
+
+            name:
+              card.name,
+
+            colors:
+              card.colors || [],
+
+            colorIdentity:
+              card.color_identity || [],
+
+            manaValue:
+              card.cmc ?? 0,
+
+            typeLine:
+              card.type_line || "",
+
+            oracleText:
+
+              card.oracle_text ||
+
+              extractFaceText(card),
+
+            image:
+              getCardImage(card),
+
+            scryfallURI:
+              card.scryfall_uri,
+
+            setCodes:
+              new Set(),
+
+            setNames:
+              new Set(),
+
+            rarities:
+              new Set()
+
+          }
+        );
+
+      }
+
+
+      const stored =
+        map.get(key);
+
+
+      stored.setCodes.add(
+        card.set
+      );
+
+
+      stored.setNames.add(
+        card.set_name
+      );
+
+
+      stored.rarities.add(
+        card.rarity
+      );
+
+
+      /*
+        Some split/transform cards put
+        images on card_faces instead.
+      */
+
+      if (!stored.image) {
+
+        stored.image =
+          getCardImage(card);
+
+      }
+
+    }
+  );
+
+
+  return [
+    ...map.values()
+  ];
+
+}
+
+
+/* ==========================================================
+   GET CARD IMAGE
+========================================================== */
+
+function getCardImage(card) {
+
+  if (
+    card.image_uris &&
+    card.image_uris.normal
+  ) {
+
+    return card.image_uris.normal;
+
+  }
+
+
+  if (
+    card.card_faces &&
+    card.card_faces[0] &&
+    card.card_faces[0].image_uris
+  ) {
+
+    return (
+      card
+        .card_faces[0]
+        .image_uris
+        .normal
+    );
+
+  }
+
+
+  return "";
+
+}
+
+
+/* ==========================================================
+   EXTRACT TEXT FROM MULTI-FACE CARDS
+========================================================== */
+
+function extractFaceText(card) {
+
+  if (!card.card_faces) {
+
+    return "";
+
+  }
+
+
+  return card.card_faces
+
+    .map(
+      face =>
+        face.oracle_text || ""
+    )
+
+    .join("\n\n");
+
+}
+
+
+/* ==========================================================
+   DETERMINE DISPLAY COLOR
+========================================================== */
+
+function getColorCategory(card) {
+
+  /*
+    Lands are always separated
+    into the Land category.
+  */
+
+  if (
+
+    card.typeLine
+
+      .toLowerCase()
+
+      .includes("land")
+
+  ) {
+
+    return "LAND";
+
+  }
+
+
+  const colors =
+    card.colors || [];
+
+
+  if (
+    colors.length === 0
+  ) {
+
+    return "COLORLESS";
+
+  }
+
+
+  if (
+    colors.length > 1
+  ) {
+
+    return "MULTI";
+
+  }
+
+
+  return colors[0];
+
+}
+
+
+/* ==========================================================
+   APPLY FILTERS
+========================================================== */
+
+function applyFilters() {
+
+  const nameSearch =
+    normalizeSearch(
+      searchInput.value
+    );
+
+
+  const rulesSearch =
+    normalizeSearch(
+      rulesInput.value
+    );
+
+
+  const color =
+    colorSelect.value;
+
+
+  const type =
+    typeSelect.value
+      .toLowerCase();
+
+
+  const set =
+    setSelect.value;
+
+
+  const mana =
+    manaSelect.value;
+
+
+  const rarity =
+    raritySelect.value;
+
+
+  filteredCards =
+
+    allCards.filter(
+      card => {
+
+
+        /* -----------------------------------
+           CARD NAME
+        ----------------------------------- */
+
+        if (
+          nameSearch &&
+          !normalizeSearch(
+            card.name
+          ).includes(
+            nameSearch
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        /* -----------------------------------
+           RULES TEXT
+        ----------------------------------- */
+
+        if (
+          rulesSearch &&
+          !normalizeSearch(
+            card.oracleText
+          ).includes(
+            rulesSearch
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        /* -----------------------------------
+           COLOR
+        ----------------------------------- */
+
+        if (
+          color &&
+          getColorCategory(
+            card
+          ) !== color
+        ) {
+
+          return false;
+
+        }
+
+
+        /* -----------------------------------
+           CARD TYPE
+        ----------------------------------- */
+
+        if (
+          type &&
+          !card.typeLine
+
+            .toLowerCase()
+
+            .includes(type)
+        ) {
+
+          return false;
+
+        }
+
+
+        /* -----------------------------------
+           SET
+        ----------------------------------- */
+
+        if (
+          set &&
+          !card.setCodes.has(
+            set
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        /* -----------------------------------
+           MANA VALUE
+        ----------------------------------- */
+
+        if (mana) {
+
+          if (
+            mana === "9+"
+          ) {
+
+            if (
+              card.manaValue < 9
+            ) {
+
+              return false;
+
+            }
+
+          }
+
+
+          else {
+
+            if (
+              card.manaValue !==
+              Number(mana)
+            ) {
+
+              return false;
+
+            }
+
+          }
+
+        }
+
+
+        /* -----------------------------------
+           RARITY
+        ----------------------------------- */
+
+        if (
+          rarity &&
+          !card.rarities.has(
+            rarity
+          )
+        ) {
+
+          return false;
+
+        }
+
+
+        return true;
+
+      }
+    );
+
+
+  sortCards(
+    filteredCards
+  );
+
+
+  visibleCount =
+    pageSize;
+
+
+  renderResults();
+
+}
+
+
+/* ==========================================================
+   SORT RESULTS
+========================================================== */
+
+function sortCards(cards) {
+
+  const mode =
+    sortSelect.value;
+
+
+  const colorOrder = {
+
+    W: 1,
+
+    U: 2,
+
+    B: 3,
+
+    R: 4,
+
+    G: 5,
+
+    MULTI: 6,
+
+    COLORLESS: 7,
+
+    LAND: 8
+
+  };
+
+
+  cards.sort(
+    (a, b) => {
+
+      switch (mode) {
+
+
+        /* -----------------------------------
+           NAME Z-A
+        ----------------------------------- */
+
+        case "name-desc":
+
+          return b.name.localeCompare(
+            a.name
+          );
+
+
+        /* -----------------------------------
+           MANA LOW-HIGH
+        ----------------------------------- */
+
+        case "mv-asc":
+
+          return (
+
+            a.manaValue -
+            b.manaValue ||
+
+            a.name.localeCompare(
+              b.name
+            )
+
+          );
+
+
+        /* -----------------------------------
+           MANA HIGH-LOW
+        ----------------------------------- */
+
+        case "mv-desc":
+
+          return (
+
+            b.manaValue -
+            a.manaValue ||
+
+            a.name.localeCompare(
+              b.name
+            )
+
+          );
+
+
+        /* -----------------------------------
+           COLOR
+        ----------------------------------- */
+
+        case "color":
+
+          return (
+
+            colorOrder[
+              getColorCategory(a)
+            ]
+
+            -
+
+            colorOrder[
+              getColorCategory(b)
+            ]
+
+            ||
+
+            a.name.localeCompare(
+              b.name
+            )
+
+          );
+
+
+        /* -----------------------------------
+           TYPE
+        ----------------------------------- */
+
+        case "type":
+
+          return (
+
+            a.typeLine.localeCompare(
+              b.typeLine
+            )
+
+            ||
+
+            a.name.localeCompare(
+              b.name
+            )
+
+          );
+
+
+        /* -----------------------------------
+           SET
+        ----------------------------------- */
+
+        case "set":
+
+          return (
+
+            getFirstSetIndex(a)
+
+            -
+
+            getFirstSetIndex(b)
+
+            ||
+
+            a.name.localeCompare(
+              b.name
+            )
+
+          );
+
+
+        /* -----------------------------------
+           DEFAULT: NAME A-Z
+        ----------------------------------- */
+
+        default:
+
+          return a.name.localeCompare(
+            b.name
+          );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* ==========================================================
+   CHRONOLOGICAL SET ORDER
+========================================================== */
+
+function getFirstSetIndex(card) {
+
+  let smallest =
+    999;
+
+
+  LEGAL_SETS.forEach(
+    ([code], index) => {
+
+      if (
+
+        card.setCodes.has(
+          code
+        )
+
+        &&
+
+        index < smallest
+
+      ) {
+
+        smallest =
+          index;
+
+      }
+
+    }
+  );
+
+
+  return smallest;
+
+}
+
+
+/* ==========================================================
+   RENDER RESULTS
+========================================================== */
+
+function renderResults() {
+
+  resultCountEl.textContent =
+
+    filteredCards.length
+      .toLocaleString();
+
+
+  const cardsToShow =
+
+    filteredCards.slice(
+      0,
+      visibleCount
+    );
+
+
+  /* -----------------------------------------
+     EMPTY RESULTS
+  ----------------------------------------- */
+
+  if (
+    !cardsToShow.length
+  ) {
+
+    resultsEl.innerHTML = `
+
+      <div class="pm-empty">
+
+        No cards match those filters.
+
+      </div>
+
+    `;
+
+
+    loadMoreButton.style.display =
+      "none";
+
+
+    return;
+
+  }
+
+
+  /* -----------------------------------------
+     CREATE CARDS
+  ----------------------------------------- */
+
+  resultsEl.innerHTML =
+
+    cardsToShow
+
+      .map(
+        card =>
+          createCardHTML(card)
+      )
+
+      .join("");
+
+
+  /* -----------------------------------------
+     SHOW/HIDE LOAD MORE
+  ----------------------------------------- */
+
+  loadMoreButton.style.display =
+
+    filteredCards.length >
+    visibleCount
+
+      ? "block"
+
+      : "none";
+
+}
+
+
+/* ==========================================================
+   CREATE CARD TILE
+========================================================== */
+
+function createCardHTML(card) {
+
+  const color =
+    getColorCategory(card);
+
+
+  const sets =
+
+    getOrderedSetNames(card)
+
+      .slice(0, 3)
+
+      .join(", ");
+
+
+  const imageHTML =
+
+    card.image
+
+      ? `
+
+        <img
+          class="pm-card-image"
+          src="${card.image}"
+          loading="lazy"
+          alt="${escapeHTML(
+            card.name
+          )}"
+        >
+
+      `
+
+      : `
+
+        <div
+          class="pm-card-image"
+        ></div>
+
+      `;
+
+
+  return `
+
+    <article
+      class="pm-card"
+      data-color="${color}"
+    >
+
+      <a
+        class="pm-card-link"
+        href="${card.scryfallURI}"
+        target="_blank"
+        rel="noopener"
+      >
+
+        ${imageHTML}
+
+
+        <div
+          class="pm-card-info"
+        >
+
+
+          <div
+            class="pm-card-name"
+          >
+
+            ${escapeHTML(
+              card.name
+            )}
+
+          </div>
+
+
+          <div
+            class="pm-card-type"
+          >
+
+            ${escapeHTML(
+              card.typeLine
+            )}
+
+          </div>
+
+
+          <div
+            class="pm-card-meta"
+          >
+
+            <span>
+
+              MV
+              ${card.manaValue}
+
+            </span>
+
+
+            <span>
+
+              ${escapeHTML(
+                sets
+              )}
+
+            </span>
+
+          </div>
+
+
+        </div>
+
+      </a>
+
+    </article>
+
+  `;
+
+}
+
+
+/* ==========================================================
+   RANDOM CARD
+
+   IMPORTANT:
+   This respects whatever filters are currently selected.
+========================================================== */
+
+function showRandomCard() {
+
+  if (
+    !filteredCards.length
+  ) {
+
+    randomArea.innerHTML = `
+
+      <div class="pm-empty">
+
+        No cards are available
+        with the current filters.
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  const card =
+
+    filteredCards[
+
+      Math.floor(
+
+        Math.random()
+
+        *
+
+        filteredCards.length
+
+      )
+
+    ];
+
+
+  const image =
+
+    card.image
+
+      ? `
+
+        <img
+
+          src="${card.image}"
+
+          alt="${escapeHTML(
+            card.name
+          )}"
+
+        >
+
+      `
+
+      : "";
+
+
+  randomArea.innerHTML = `
+
+    <div
+      class="pm-random-title"
+    >
+
+      ✦ YOUR RANDOM PREMODERN CARD
+
+    </div>
+
+
+    <div
+      class="pm-random-card"
+    >
+
+
+      <a
+
+        href="${card.scryfallURI}"
+
+        target="_blank"
+
+        rel="noopener"
+
+      >
+
+        ${image}
+
+      </a>
+
+
+      <div>
+
+
+        <div
+          class="pm-random-name"
+        >
+
+          ${escapeHTML(
+            card.name
+          )}
+
+        </div>
+
+
+        <div
+          class="pm-random-type"
+        >
+
+          ${escapeHTML(
+            card.typeLine
+          )}
+
+          ·
+
+          Mana Value
+          ${card.manaValue}
+
+        </div>
+
+
+        <div
+          class="pm-random-text"
+        >
+
+          ${escapeHTML(
+            card.oracleText
+          )}
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  randomArea.scrollIntoView({
+
+    behavior:
+      "smooth",
+
+    block:
+      "nearest"
+
+  });
+
+}
+
+
+/* ==========================================================
+   GET SET NAMES IN CHRONOLOGICAL ORDER
+========================================================== */
+
+function getOrderedSetNames(card) {
+
+  return LEGAL_SETS
+
+    .filter(
+      ([code]) =>
+        card.setCodes.has(
+          code
+        )
+    )
+
+    .map(
+      ([, name]) =>
+        name
+    );
+
+}
+
+
+/* ==========================================================
+   RESET ALL FILTERS
+========================================================== */
+
+function resetFilters() {
+
+  searchInput.value =
+    "";
+
+
+  rulesInput.value =
+    "";
+
+
+  colorSelect.value =
+    "";
+
+
+  typeSelect.value =
+    "";
+
+
+  setSelect.value =
+    "";
+
+
+  manaSelect.value =
+    "";
+
+
+  raritySelect.value =
+    "";
+
+
+  sortSelect.value =
+    "name-asc";
+
+
+  randomArea.innerHTML =
+    "";
+
+
+  applyFilters();
+
+}
+
+
+/* ==========================================================
+   SEARCH NORMALIZATION
+========================================================== */
+
+function normalizeSearch(value) {
+
+  return String(value || "")
+
+    .normalize("NFD")
+
+    .replace(
+      /[\u0300-\u036f]/g,
+      ""
+    )
+
+    .toLowerCase();
+
+}
+
+
+/* ==========================================================
+   ESCAPE USER / CARD TEXT BEFORE ADDING TO HTML
+========================================================== */
+
+function escapeHTML(value = "") {
+
+  return String(value)
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
+}
+
+
+/* ==========================================================
+   SMALL DELAY BETWEEN API REQUESTS
+========================================================== */
+
+function sleep(ms) {
+
+  return new Promise(
+
+    resolve =>
+      setTimeout(
+        resolve,
+        ms
+      )
+
+  );
+
+}
+
+
+/* ==========================================================
+   EVENT LISTENERS
+========================================================== */
+
+/*
+  Search inputs update instantly
+  while typing.
+*/
+
+[
+  searchInput,
+  rulesInput
+
+].forEach(
+  input => {
+
+    input.addEventListener(
+      "input",
+      applyFilters
+    );
+
+  }
+);
+
+
+/*
+  Dropdown filters update
+  whenever changed.
+*/
+
+[
+  colorSelect,
+  typeSelect,
+  setSelect,
+  manaSelect,
+  raritySelect,
+  sortSelect
+
+].forEach(
+  select => {
+
+    select.addEventListener(
+      "change",
+      applyFilters
+    );
+
+  }
+);
+
+
+/*
+  RANDOM CARD
+*/
+
+randomButton.addEventListener(
+  "click",
+  showRandomCard
+);
+
+
+/*
+  RESET
+*/
+
+resetButton.addEventListener(
+  "click",
+  resetFilters
+);
+
+
+/*
+  SHOW MORE RESULTS
+*/
+
+loadMoreButton.addEventListener(
+  "click",
+  () => {
+
+    visibleCount +=
+      pageSize;
+
+
+    renderResults();
+
+  }
+);
+
+
+/* ==========================================================
+   START APPLICATION
+========================================================== */
+
+loadPremodernCards();
+
+</script>
